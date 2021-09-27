@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Posts, Vue3 + REST</title>
+    <style>
+        button {
+            margin: 5px 5px 5px 5px
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Posts, Vue3 + REST</h1>
+
+    <div id="app">
+
+        <button class="btn btn-warning" v-on:click="cleanList">Clean the list</button>
+        <input v-model.number="userId" placeholder="User Id" type="number">
+        <button class="btn btn-primary" v-on:click="getByUserId(userId)">Get By UserId</button>
+
+        <div v-if="error" style="color: red">{{error}}</div>
+
+        <ul v-if="posts.length > 0">
+            <li v-for="post in posts">
+                UserId {{post.userId}}  : {{post.title}} 
+            </li>
+        </ul>
+        <!--table v-if="posts.length" class="table table-striped">
+            <tr v-for="post in posts">
+                <td>{{post.userId}}</td>
+                <td>{{post.title}}</td>
+            </tr>
+        </table-->
+        <div v-else style="font-style: italic;">No such posts</div>
+    </div>
+
+    <script src="js/index.js"></script>
+</body>
+
+</html>
